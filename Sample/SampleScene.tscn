@@ -1,0 +1,150 @@
+[gd_scene load_steps=7 format=3 uid="uid://cp8u03ybary7j"]
+
+[ext_resource type="PackedScene" uid="uid://ron4kkbtd3wp" path="res://Sample/Resources/hallway_2.tscn" id="1_pw345"]
+[ext_resource type="PackedScene" uid="uid://ca3v7ki2bwrmm" path="res://lightray.glb" id="2_egnxh"]
+[ext_resource type="Script" path="res://Sample/CameraManager.gd" id="3_3wda6"]
+[ext_resource type="Script" path="res://Sample/Resources/free_look.gd" id="4_gje05"]
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_wyxcw"]
+
+[sub_resource type="Curve3D" id="Curve3D_hhake"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799894, 0, 1.10149)
+visible = false
+
+[node name="Hallway2" parent="." instance=ExtResource("1_pw345")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799894, 0, 1.10149)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.221676, 1.2645, 0.0261571, 0.000772374, 1.07507, -0.105471, -0.141465, 1.98734, 0.0404123, -0.302167, 1.18597, 0.774834)
+mesh = SubResource("PlaceholderMesh_wyxcw")
+skeleton = NodePath("../Split Light Rays")
+
+[node name="Split Light Rays" type="Node3D" parent="."]
+
+[node name="lightray2" parent="Split Light Rays" instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.137549, 2.38713, 0.0400779, 0.000580344, 1.51987, -0.121581, -0.141793, 2.3219, 0.0383808, 1.71571, 1.70571, 3.57499)
+
+[node name="lightray13" parent="Split Light Rays" instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.16719, 0.734836, 0.0301083, 0.000581671, 0.627373, -0.121903, -0.106071, 1.1617, 0.0467885, 2.58683, 1.11835, 1.9145)
+
+[node name="lightray3" parent="Split Light Rays" instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.221676, 1.2645, 0.0261571, 0.000772381, 1.07507, -0.105471, -0.141465, 1.98734, 0.0404124, -0.297691, 1.19006, 0.778701)
+
+[node name="lightray4" parent="Split Light Rays" instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.167282, 0.761195, 0.0312546, 0.00616272, 0.618181, -0.123261, -0.105748, 1.24016, 0.0422583, 2.53579, 1.52775, 1.282)
+
+[node name="lightray5" parent="Split Light Rays" instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.167282, 0.761195, 0.0312546, 0.00616272, 0.618181, -0.123261, -0.105748, 1.24016, 0.0422583, 1.53579, 1.52775, 1.282)
+
+[node name="lightray6" parent="Split Light Rays" instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.167282, 0.761195, 0.0312546, 0.00616272, 0.618181, -0.123261, -0.105748, 1.24016, 0.0422583, 0.530535, 1.52775, 1.282)
+
+[node name="lightray7" parent="Split Light Rays" instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.167282, 0.761195, 0.0312546, 0.00616272, 0.618181, -0.123261, -0.105748, 1.24016, 0.0422583, 2.11135, 1.15673, 1.282)
+
+[node name="lightray8" parent="Split Light Rays" instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.167282, 0.761195, 0.0312546, 0.00616272, 0.618181, -0.123261, -0.105748, 1.24016, 0.0422583, 1.11135, 0.965275, 1.282)
+
+[node name="lightray9" parent="Split Light Rays" instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.167282, 0.761195, 0.0312546, 0.00616272, 0.618181, -0.123261, -0.105748, 1.24016, 0.0422583, 0.106092, 1.15673, 1.282)
+
+[node name="lightray10" parent="Split Light Rays" instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.167282, 0.761195, 0.0312546, 0.00616272, 0.618181, -0.123261, -0.105748, 1.24016, 0.0422583, 2.54152, 0.925177, 1.23256)
+
+[node name="lightray11" parent="Split Light Rays" instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.152962, 0.908346, 0.0362282, 0.00616271, 0.618181, -0.123261, -0.125573, 1.1368, 0.0380806, 2.51988, 1.54707, 1.4295)
+
+[node name="lightray12" parent="Split Light Rays" instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.167282, 0.761195, 0.0312546, 0.00616272, 0.618181, -0.123261, -0.105748, 1.24016, 0.0422583, 0.536262, 0.454024, 1.23256)
+
+[node name="lightray" parent="." instance=ExtResource("2_egnxh")]
+transform = Transform3D(0.909002, 1.51057, 0.112916, -0.0752198, 0.685662, -0.650749, -0.852542, 1.55011, 0.17781, 0.719478, 1.01138, 1.56197)
+visible = false
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 191.0
+offset_bottom = 100.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_right = 190.0
+offset_bottom = 100.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cameras"
+
+[node name="Button" type="Button" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 63.0
+offset_right = 183.0
+offset_bottom = 94.0
+text = "Next Camera"
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(-0.348433, -0.088746, 0.933123, -0.00533392, 0.995679, 0.0927039, -0.937319, 0.0273239, -0.347401, 0, 0, 0)
+curve = SubResource("Curve3D_hhake")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.999994, 0, -8.74222e-08, 0, 0.999991, 0, 8.74222e-08, 0, -0.999993, 0, 0, -4.15)
+
+[node name="Cameras" type="Node3D" parent="." node_paths=PackedStringArray("label")]
+script = ExtResource("3_3wda6")
+label = NodePath("../Control/Panel/RichTextLabel")
+
+[node name="Free Look" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.348433, -0.088746, 0.933123, -0.00533392, 0.995679, 0.0927039, -0.937319, 0.0273239, -0.347401, 4.34084, 1.42625, -0.37506)
+script = ExtResource("4_gje05")
+
+[node name="Control" type="Control" parent="Cameras/Free Look"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Cameras/Free Look/Control"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 102.0
+offset_right = 189.0
+offset_bottom = 148.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Right Click to Look
+WASD to move around"
+fit_content = true
+scroll_active = false
+
+[node name="Orthographic" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.707107, -0.353553, 0.612373, 4.37114e-08, 0.866025, 0.5, -0.707107, 0.353553, -0.612372, 7.21696, 6.41341, -5.30294)
+
+[node name="Head-On Rays" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, 0.381158, 0.788064, -0.37506)
+fov = 67.7
+size = 8.496
+
+[node name="Hallway" type="Camera3D" parent="Cameras"]
+transform = Transform3D(-0.579156, -0.0786502, 0.811414, -0.00533391, 0.995679, 0.0927039, -0.815199, 0.049362, -0.577074, 4.39549, 1.42625, -0.37506)
+fov = 67.7
+size = 8.496
+
+[connection signal="pressed" from="Control/Panel/Button" to="Cameras" method="change_camera"]

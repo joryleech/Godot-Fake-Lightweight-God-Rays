@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b1805h1pod0r0"]
+
+[resource]
+diffuse_mode = 1
+albedo_color = Color(0.778009, 0.421551, 0.524503, 1)
+metallic = 0.15
+roughness = 0.62
+clearcoat_enabled = true

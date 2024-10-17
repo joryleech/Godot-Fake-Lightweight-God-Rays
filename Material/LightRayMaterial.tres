@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d1jdy7tfnvi7e"]
+
+[ext_resource type="Shader" uid="uid://b7qg4le4kgoxb" path="res://Material/LightRayShader.tres" id="1_x6qms"]
+[ext_resource type="Texture2D" uid="uid://d2c68angmdto2" path="res://Material/Textures/GradiantBroken.png" id="2_bo2jk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_x6qms")
+shader_parameter/LightColor = Color(0.995121, 0.861069, 0.776998, 1)
+shader_parameter/MaxOpacity = 0.01
+shader_parameter/LightTransparencyTexture = ExtResource("2_bo2jk")

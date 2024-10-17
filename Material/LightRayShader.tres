@@ -1,0 +1,137 @@
+[gd_resource type="VisualShader" load_steps=13 format=3 uid="uid://b7qg4le4kgoxb"]
+
+[ext_resource type="Texture2D" uid="uid://d2c68angmdto2" path="res://Material/Textures/GradiantBroken.png" id="1_x0w7g"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_vlhoe"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeIntConstant" id="VisualShaderNodeIntConstant_pdf4e"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_geiyy"]
+parameter_name = "LightTransparencyTexture"
+texture_filter = 2
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_072gn"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_rjm13"]
+parameter_name = "MaxOpacity"
+default_value_enabled = true
+default_value = 0.02
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_fuae3"]
+source = 4
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_putsu"]
+expanded_output_ports = [0]
+parameter_name = "LightColor"
+default_value_enabled = true
+default_value = Color(0.955963, 0.955963, 0.955963, 1)
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_n20d0"]
+function = 31
+
+[sub_resource type="VisualShaderNodeDistanceFade" id="VisualShaderNodeDistanceFade_725ry"]
+default_input_values = [0, 0.0, 1, 15.0]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_my65c"]
+default_input_values = [0, 0.0, 1, 0.02]
+operator = 7
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_1arki"]
+source = 5
+texture = ExtResource("1_x0w7g")
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_never, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled, ambient_light_disabled;
+
+uniform vec4 LightColor : source_color = vec4(0.955963, 0.955963, 0.955963, 1.000000);
+uniform sampler2D depth_tex_frg_3 : hint_depth_texture;
+uniform float MaxOpacity = 0.01999999955297;
+uniform sampler2D LightTransparencyTexture : filter_linear;
+
+
+
+void fragment() {
+// ColorParameter:5
+	vec4 n_out5p0 = LightColor;
+
+
+// IntConstant:13
+	int n_out13p0 = 0;
+
+
+	vec4 n_out3p0;
+// Texture2D:3
+	{
+		float _depth = textureLod(depth_tex_frg_3, UV, float(n_out13p0)).r;
+		n_out3p0 = vec4(_depth, _depth, _depth, 1.0);
+	}
+
+
+// FloatFunc:6
+	float n_out6p0 = 1.0 - n_out3p0.x;
+
+
+// DistanceFade:7
+	float n_in7p1 = 15.00000;
+	float n_out7p0 = clamp(smoothstep(n_out6p0, n_in7p1, length(VERTEX)), 0.0, 1.0);
+
+
+// FloatParameter:16
+	float n_out16p0 = MaxOpacity;
+
+
+// FloatOp:8
+	float n_out8p0 = min(n_out7p0, n_out16p0);
+
+
+// Input:15
+	vec2 n_out15p0 = UV;
+
+
+	vec4 n_out9p0;
+// Texture2D:9
+	n_out9p0 = texture(LightTransparencyTexture, n_out15p0);
+
+
+// FloatOp:10
+	float n_out10p0 = n_out8p0 * n_out9p0.x;
+
+
+// Output:0
+	ALBEDO = vec3(n_out5p0.xyz);
+	ALPHA = n_out10p0;
+
+
+}
+"
+modes/depth_draw = 2
+flags/unshaded = true
+flags/shadows_disabled = true
+flags/ambient_light_disabled = true
+nodes/fragment/0/position = Vector2(400, 160)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_fuae3")
+nodes/fragment/3/position = Vector2(-2320, 220)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorParameter_putsu")
+nodes/fragment/5/position = Vector2(-380, -20)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatFunc_n20d0")
+nodes/fragment/6/position = Vector2(-1980, 240)
+nodes/fragment/7/node = SubResource("VisualShaderNodeDistanceFade_725ry")
+nodes/fragment/7/position = Vector2(-1620, 280)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatOp_my65c")
+nodes/fragment/8/position = Vector2(-1000, 180)
+nodes/fragment/9/node = SubResource("VisualShaderNodeTexture_1arki")
+nodes/fragment/9/position = Vector2(-1260, 560)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatOp_vlhoe")
+nodes/fragment/10/position = Vector2(-140, 640)
+nodes/fragment/13/node = SubResource("VisualShaderNodeIntConstant_pdf4e")
+nodes/fragment/13/position = Vector2(-2640, 240)
+nodes/fragment/14/node = SubResource("VisualShaderNodeTexture2DParameter_geiyy")
+nodes/fragment/14/position = Vector2(-1680, 560)
+nodes/fragment/15/node = SubResource("VisualShaderNodeInput_072gn")
+nodes/fragment/15/position = Vector2(-1660, 440)
+nodes/fragment/16/node = SubResource("VisualShaderNodeFloatParameter_rjm13")
+nodes/fragment/16/position = Vector2(-1320, 320)
+nodes/fragment/connections = PackedInt32Array(7, 0, 8, 0, 6, 0, 7, 0, 3, 0, 6, 0, 8, 0, 10, 0, 9, 0, 10, 1, 13, 0, 3, 1, 14, 0, 9, 2, 15, 0, 9, 0, 5, 0, 0, 0, 10, 0, 0, 1, 16, 0, 8, 1)

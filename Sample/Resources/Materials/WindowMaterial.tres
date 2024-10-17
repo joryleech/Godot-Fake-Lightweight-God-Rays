@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c15bp6j2awhwm"]
+
+[resource]
+disable_ambient_light = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+disable_receive_shadows = true
