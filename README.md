@@ -40,8 +40,11 @@ The project includes a sample scene that showcases how to implement the god rays
 ## Material
 
 The material has the following parameters
+
 **Light Color (Color)** - Adjusts the albedo color of the light rays
+
 **Maximum Opacity (Float)** - Adjust how transparent the light rays are when far away
+
 **Light Transparency Texture (Texture2D)** - A Gradiant texture that adjusts the transparency of the light beam.
 Two example textures are included in this pack.
 
